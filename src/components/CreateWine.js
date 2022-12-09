@@ -8,10 +8,10 @@ export default function CreateWine() {
 
     const [formState, setFormState] = useState({
         name: "",
+        image: "",
         type: "",
         year: "",
         region: "",
-        image: "",
         description: "",
     })
 
@@ -20,18 +20,19 @@ export default function CreateWine() {
     }
 
     const submitForm = () =>{
+        console.log(formState)
         axios.post("http://localhost:4200/wines/create", 
         {
             name: formState.name,
             type: formState.type,
             year: formState.year,
             region: formState.region,
-            image: formState.image,
             description: formState.description,
 
         })
         .then((response)=>{
             console.log(response);
+            // props.fetchWines();
             navigate("/wines");
         })
         .catch((err)=>{
@@ -48,8 +49,8 @@ export default function CreateWine() {
             </div>
             <br></br>
             <div>
-                Image
-                <input type="file" value={formState.image} onChange={(e)=>{updateInput(e,"image")}} />
+                Type
+                <input type="text" value={formState.type} onChange={(e)=>{updateInput(e,"type")}} />
             </div>
             <br></br>
             <div>
@@ -57,19 +58,9 @@ export default function CreateWine() {
                 <input type="number" value={formState.year} onChange={(e)=>{updateInput(e,"year")}} />
             </div>
             <br></br>
-            <div>
+             <div>
                 Region
                 <input type="text" value={formState.region} onChange={(e)=>{updateInput(e,"region")}} />
-            </div>
-            <br></br>
-             <div>
-                Cuisine
-                <input type="text" value={formState.cuisine} onChange={(e)=>{updateInput(e,"cuisine")}} />
-            </div>
-            <br></br>
-            <div>
-                Duration
-                <input type="text" value={formState.duration} onChange={(e)=>{updateInput(e,"duration")}} />
             </div>
             <br></br>
             <div>

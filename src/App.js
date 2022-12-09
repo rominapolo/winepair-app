@@ -7,6 +7,10 @@ import AllWines from './components/AllWines';
 import CreateRecipe from './components/CreateRecipe';
 import CreateWine from './components/CreateWine';
 import { UserProvider } from "./contexts/UserContext";
+import EditWine from './components/EditWine';
+import WineDetails from './components/WineDetails';
+import RecipeDetails from './components/RecipeDetails';
+import EditRecipe from './components/EditRecipe';
 
 function App() {
 
@@ -28,7 +32,7 @@ const fetchRecipes = () => {
 const fetchWines = () => {
   axios.get('http://localhost:4200/wines')
   .then((winesFromDb) => {
-    console.log({winesFromDb})
+    console.log(winesFromDb)
     setTheWines(winesFromDb.data);
   })
   .catch((err) => {
@@ -38,9 +42,6 @@ const fetchWines = () => {
 
   useEffect(() => {
   fetchRecipes();
-}, []);
-
-useEffect(() => {
   fetchWines();
 }, []);
 
@@ -74,8 +75,18 @@ console.log(theWines);
     
     <Route path="/recipes/create" element = {<CreateRecipe />} /> 
 
+    <Route path="/recipes/:id" element = {<RecipeDetails />} />
+    
+    <Route path="/recipes/edit/:id" element ={<EditRecipe />} />
+
+
     <Route path="/wines/create" element = {<CreateWine />} />
 
+    <Route path="/wines/:id" element = {<WineDetails />} />
+
+    <Route path="/wines/edit/:id" element = {<EditWine />} />
+
+  
     </Routes>
 
     </UserProvider>
