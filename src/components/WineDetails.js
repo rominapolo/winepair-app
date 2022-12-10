@@ -18,6 +18,7 @@ export default function WineDetails({fetchWines,theUser}){
   const [theWine, setTheWine] = useState({});
 
   console.log(theWine);
+  console.log(fetchWines);
 
   const fetchWineDetails = ()=>{
         axios.get("http://localhost:4200/wines/"+id)

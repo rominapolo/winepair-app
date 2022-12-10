@@ -47,7 +47,10 @@ const fetchWines = () => {
 
 console.log(theRecipes);
 console.log(theWines);
+if (!theRecipes||!theWines){
+  return "loading"
 
+}
   return (
     <div className="App">
 
@@ -73,16 +76,14 @@ console.log(theWines);
     <Route path="/wines" element={<AllWines theWines={theWines} 
     fetchWines={fetchWines} />} />
     
-    <Route path="/recipes/create" element = {<CreateRecipe />} /> 
+    <Route path="/recipes/create" element = {<CreateRecipe fetchRecipes={fetchRecipes} theWines={theWines} />} /> 
 
-    <Route path="/recipes/:id" element = {<RecipeDetails />} />
+    <Route path="/recipes/:id" element = {<RecipeDetails fetchRecipes={fetchRecipes} theWines={theWines} />} />
     
-    <Route path="/recipes/edit/:id" element ={<EditRecipe />} />
 
+    <Route path="/wines/create" element = {<CreateWine fetchWines={fetchWines} />} />
 
-    <Route path="/wines/create" element = {<CreateWine />} />
-
-    <Route path="/wines/:id" element = {<WineDetails />} />
+    <Route path="/wines/:id" element = {<WineDetails fetchWines={fetchWines}/>} />
 
     <Route path="/wines/edit/:id" element = {<EditWine />} />
 

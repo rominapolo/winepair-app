@@ -2,23 +2,24 @@ import "../App.css";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import {useState} from 'react';
-
-export default function EditWine({wine, stopEditing, fetchWines}){
+// {wine, stopEditing, fetchWines}
+export default function EditWine(props){
 
     const navigate = useNavigate();
 
     const endEdit = () =>{
-        stopEditing()
+        props.stopEditing()
     }
 
-    const [formState, setFormState] = useState(wine);
+    const [formState, setFormState] = useState(props.wine);
 
     const updateInput = (e, thingToUpdate)=>{
         setFormState({...formState, [thingToUpdate]: e.target.value})
     }
+    
 
     const submitForm = () =>{
-       axios.post("http://localhost:4200/edit/"+wine._id, 
+       axios.post("http://localhost:4200/wines/edit/"+props.wine._id, 
         {
             name: formState.name,
             type: formState.type,
@@ -29,7 +30,7 @@ export default function EditWine({wine, stopEditing, fetchWines}){
         })
         .then((response)=>{
             console.log(response);
-            fetchWines();
+            props.fetchWines();
             navigate("/wines");
         })
         .catch((err)=>{
@@ -46,9 +47,15 @@ export default function EditWine({wine, stopEditing, fetchWines}){
             </div>
             <br></br>
             <div>
-            Type
-                <input value={formState.type} onChange={(e)=>{updateInput(e, "type")}}/>
-           </div>
+                Type
+                <select type="text" value={formState.type} onChange={(e)=>{updateInput(e,"type")}}>
+                <option value="red">Red</option>
+                <option value="white">White</option>
+                <option value="rose">Rosé</option>
+                <option value="dessert">Dessert</option>
+                <option value="sparkling">Sparkling</option>
+                </select> 
+            </div>
            <br></br>
            <div>
                 Year

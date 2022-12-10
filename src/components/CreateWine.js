@@ -3,12 +3,11 @@ import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import '../App.css';
 
-export default function CreateWine() {
+export default function CreateWine(fetchWines) {
     const navigate = useNavigate();
 
     const [formState, setFormState] = useState({
         name: "",
-        image: "",
         type: "",
         year: "",
         region: "",
@@ -32,7 +31,7 @@ export default function CreateWine() {
         })
         .then((response)=>{
             console.log(response);
-            // props.fetchWines();
+            fetchWines();
             navigate("/wines");
         })
         .catch((err)=>{
@@ -50,7 +49,13 @@ export default function CreateWine() {
             <br></br>
             <div>
                 Type
-                <input type="text" value={formState.type} onChange={(e)=>{updateInput(e,"type")}} />
+                <select type="text" value={formState.type} onChange={(e)=>{updateInput(e,"type")}}>
+                <option value="red">Red</option>
+                <option value="white">White</option>
+                <option value="rose">Rosé</option>
+                <option value="dessert">Dessert</option>
+                <option value="sparkling">Sparkling</option>
+                </select> 
             </div>
             <br></br>
             <div>
@@ -65,7 +70,8 @@ export default function CreateWine() {
             <br></br>
             <div>
                 Description
-                <input type="text" value={formState.description} onChange={(e)=>{updateInput(e,"description")}} />
+                <textarea rows="6" cols="30" type="text" value={formState.description} onChange={(e)=>{updateInput(e,"description")}}>
+                </textarea>
             </div>
            
             <button onClick={submitForm}>Submit</button>
