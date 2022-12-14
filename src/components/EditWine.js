@@ -49,11 +49,11 @@ export default function EditWine(props){
             <div>
                 Type
                 <select type="text" value={formState.type} onChange={(e)=>{updateInput(e,"type")}}>
-                <option value="red">Red</option>
-                <option value="white">White</option>
-                <option value="rose">Rosé</option>
-                <option value="dessert">Dessert</option>
-                <option value="sparkling">Sparkling</option>
+                <option value="Red">Red</option>
+                <option value="White">White</option>
+                <option value="Rose">Rosé</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Sparkling">Sparkling</option>
                 </select> 
             </div>
            <br></br>

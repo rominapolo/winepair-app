@@ -20,7 +20,7 @@ const deleteWine = (theID) => {
 
 const listOfWines = theWines.map((eachWine)=>{
 
-return(<div key={eachWine._id} className="wine-list">
+return(<div key={eachWine._id} className="list">
 <Link to={"/wines/"+eachWine._id}>
 <h3>{eachWine.name}</h3> </Link>
 <button
@@ -33,12 +33,14 @@ deleteWine(eachWine._id);
 
 
 return(
-   <div className="wine-list-container">
+   <div className="list-container">
+   <center>
        <h1>Your Wines</h1>
        {listOfWines}
        <br></br>
        <br></br>
-       <Link to={"/wines/create"}>Add a Wine</Link>
+       <button className='add-button'><Link to={"/wines/create"}>Add a Wine</Link></button>
+	</center>
     </div>
     )
 }

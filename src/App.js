@@ -6,16 +6,45 @@ import AllRecipes from './components/AllRecipes';
 import AllWines from './components/AllWines';
 import CreateRecipe from './components/CreateRecipe';
 import CreateWine from './components/CreateWine';
-import { UserProvider } from "./contexts/UserContext";
 import EditWine from './components/EditWine';
 import WineDetails from './components/WineDetails';
 import RecipeDetails from './components/RecipeDetails';
-import EditRecipe from './components/EditRecipe';
+import FetchData from './components/FetchData';
+import NavBar from './components/NavBar';
+import Home from './Pages/Home';
 
 function App() {
 
 const [theRecipes, setTheRecipes] = useState([]);
 const [theWines, setTheWines] = useState([]);
+
+
+
+  // const getUserInfo = () =>{
+  //   axios.get("http://localhost:4200/serializeuser", {withCredentials: true})
+  //   .then((response)=>{
+  //     setTheUser(response.data);
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err);
+  //   })
+  // }
+
+  // useEffect(()=>{
+  //   getUserInfo();
+  // }, [])
+
+
+  // const logout = () =>{
+  //   axios.post("http://localhost:4200/logout",{}, {withCredentials: true})
+  //   .then((response)=>{
+  //     console.log(response.data)
+  //     if(response.data.message === "successfully logged out")setTheUser(null);
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err);
+  //   })
+  // }
 
 
 const fetchRecipes = () => {
@@ -51,24 +80,15 @@ if (!theRecipes||!theWines){
   return "loading"
 
 }
+
   return (
-    <div className="App">
+  <div className="main">
 
-    <UserProvider>
-
-    <Link to = "/" >HOME</Link> 
-
-    <h1>PairWithMe</h1>
-    <h3>Recipes & Wines</h3>
-    
-    <Link to = "/recipes" >All Recipes</Link> | <Link to = "/recipes/create" >Add a Recipe</Link>
-     <br></br>
-    <br></br>
-    <Link to ="/wines" >Wine List</Link> |  <Link to ="/wines/create" >Add a Wine</Link>
-    <br></br>
-    <br></br>
+    <NavBar />
 
     <Routes>
+
+    <Route path="/data" element={<FetchData />} />
 
     <Route path="/recipes" element={<AllRecipes theRecipes={theRecipes} 
     fetchRecipes={fetchRecipes} />} />
@@ -79,7 +99,6 @@ if (!theRecipes||!theWines){
     <Route path="/recipes/create" element = {<CreateRecipe fetchRecipes={fetchRecipes} theWines={theWines} />} /> 
 
     <Route path="/recipes/:id" element = {<RecipeDetails fetchRecipes={fetchRecipes} theWines={theWines} />} />
-    
 
     <Route path="/wines/create" element = {<CreateWine fetchWines={fetchWines} />} />
 
@@ -87,10 +106,10 @@ if (!theRecipes||!theWines){
 
     <Route path="/wines/edit/:id" element = {<EditWine />} />
 
-  
+    <Route path="/" element = {<Home />} />
+
     </Routes>
 
-    </UserProvider>
 
     
     </div>

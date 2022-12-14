@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import axios from 'axios';
 
+
 export default function AllRecipes({theRecipes, fetchRecipes, eachRecipe}) {
 
 
@@ -20,7 +21,7 @@ const deleteRecipe = (theID) => {
 
 const listOfRecipes = theRecipes.map((eachRecipe)=>{
 
-return(<div key={eachRecipe._id} className="recipe-list">
+return(<div key={eachRecipe._id} className="list">
 <Link to={"/recipes/"+eachRecipe._id}>
 <h3>{eachRecipe.name}</h3> </Link>
 <button
@@ -32,12 +33,14 @@ deleteRecipe(eachRecipe._id);
 })
 
 return(
-   <div className="recipe-list-container">
+   <div className="list-container">
+       <center>
        <h1>Your Recipes</h1>
        {listOfRecipes}
 	   <br></br>
 	   <br></br>
-       <Link to={"/recipes/create"}>Add a Recipe</Link>
+       <button className='add-button'><Link to={"/recipes/create"}>Add a Recipe</Link></button>
+	   </center>
     </div>
     )
 }
