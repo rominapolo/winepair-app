@@ -24,6 +24,7 @@ export default function SignupOrLogin({action, getUserInfo}){
             email: formState.email,
             password: formState.password
         },
+
         {withCredentials: true}
         )
         .then((response)=>{
@@ -36,21 +37,27 @@ export default function SignupOrLogin({action, getUserInfo}){
 
     }
 
-
     return(
-      
-    <div className={action}>
+    <div className='login-signup'>
+    <center>
+    <div className={action} className='login-signup-form'>
       {action === "signup" ? "Signup" : "Login"}
       <div>
-        Email
+        <h4>Email</h4>
         <input type="text" value={formState.username} onChange={(e)=>{updateInput(e, "email")}} />
       </div>
+      <br></br>
       <div>
-        Password
+        <h4>Password</h4>
         <input type="text" value={formState.password} onChange={(e)=>{updateInput(e, "password")}} />
       </div>
+      <br></br>
       <button onClick={submitSignupForm}>Submit</button>
+     
     </div>
+     </center>
+    </div>  
+    
     )
 
 }

@@ -36,17 +36,28 @@ export default function WineDetails({fetchWines,theUser}){
     },[id])
 
    return(
-        <div className='wine-details-component'>
+        <div className='details-component'>
            
             {editing && <EditWine fetchWines={fetchWines}stopEditing={setEditing} wine={theWine} />}
-            {!editing && <div>
+
+            <center>
+            {!editing && <div className='details'>
             <p><button onClick={edit}>edit</button></p>
-            <h3>{theWine.name}</h3>
+            <h1>{theWine.name}</h1>
+
+            <h4>Type:</h4>
             <p>{theWine.type}</p>
+
+            <h4>Year:</h4>
             <p>{theWine.year}</p>
+
+            <h4>Region:</h4>
             <p>{theWine.region}</p>
+
+            <h4>Description:</h4>
             <p>{theWine.description}</p>
             </div>}
+            </center>
             
         </div>
     )

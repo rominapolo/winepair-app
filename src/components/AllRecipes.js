@@ -21,7 +21,8 @@ const deleteRecipe = (theID) => {
 
 const listOfRecipes = theRecipes.map((eachRecipe)=>{
 
-return(<div key={eachRecipe._id} className="list">
+return(
+<div key={eachRecipe._id} className="list">
 <Link to={"/recipes/"+eachRecipe._id}>
 <h3>{eachRecipe.name}</h3> </Link>
 <button

@@ -9,42 +9,43 @@ import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 import WineDetails from './components/WineDetails';
 import RecipeDetails from './components/RecipeDetails';
-import FetchData from './components/FetchData';
 import NavBar from './components/NavBar';
 import Home from './Pages/Home';
+import SignupOrLogin from './components/Signup';
 
 function App() {
 
 const [theRecipes, setTheRecipes] = useState([]);
 const [theWines, setTheWines] = useState([]);
+const [theUser, setTheUser] = useState(null);
 
 
 
-  // const getUserInfo = () =>{
-  //   axios.get("http://localhost:4200/serializeuser", {withCredentials: true})
-  //   .then((response)=>{
-  //     setTheUser(response.data);
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err);
-  //   })
-  // }
+  const getUserInfo = () =>{
+    axios.get("http://localhost:4200/serializeuser", {withCredentials: true})
+    .then((response)=>{
+      setTheUser(response.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
 
-  // useEffect(()=>{
-  //   getUserInfo();
-  // }, [])
+  useEffect(()=>{
+    getUserInfo();
+  }, [])
 
 
-  // const logout = () =>{
-  //   axios.post("http://localhost:4200/logout",{}, {withCredentials: true})
-  //   .then((response)=>{
-  //     console.log(response.data)
-  //     if(response.data.message === "successfully logged out")setTheUser(null);
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err);
-  //   })
-  // }
+  const logout = () =>{
+    axios.post("http://localhost:4200/logout",{}, {withCredentials: true})
+    .then((response)=>{
+      console.log(response.data)
+      if(response.data.message === "successfully logged out")setTheUser(null);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
 
 
 const fetchRecipes = () => {
@@ -88,7 +89,7 @@ if (!theRecipes||!theWines){
 
     <Routes>
 
-    <Route path="/data" element={<FetchData />} />
+  
 
     <Route path="/recipes" element={<AllRecipes theRecipes={theRecipes} 
     fetchRecipes={fetchRecipes} />} />
@@ -107,6 +108,10 @@ if (!theRecipes||!theWines){
     <Route path="/wines/edit/:id" element = {<EditWine />} />
 
     <Route path="/" element = {<Home />} />
+
+    <Route path="/login" element = {<SignupOrLogin action="login" />} />
+    
+    <Route path="/signup" element = {<SignupOrLogin action="signup" />} />
 
     </Routes>
 

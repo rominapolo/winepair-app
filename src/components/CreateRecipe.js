@@ -51,8 +51,10 @@ export default function CreateRecipe({theWines, fetchRecipes}) {
     }
     
     return (
-     <div>
-     <h1>Add a New Recipe!</h1>
+     <div className='add-wine-or-recipe'>
+     <div className='add-form'>
+     <center>
+     <h1>Add a New Recipe</h1>
 
             <div>
                 Name
@@ -101,12 +103,13 @@ export default function CreateRecipe({theWines, fetchRecipes}) {
                 </select>
             </div>
             <br></br>
-            {/* <div>
-                Created By
-                <input type="text" value={formState.creator} onChange={(e)=>{updateInput(e,"creator")}} />
-            </div> */}
-            
-            <button onClick={submitForm}>Submit</button>
+            <button onClick={submitForm}>Add a Recipe</button>
+        </center>
+        </div>
+
+        <div className='recipe-image'>
+        </div>
+
         </div>
   )
 }

@@ -46,55 +46,58 @@ export default function EditRecipe({theWines, recipe, stopEditing, fetchRecipes}
         })
     }
     return(
-    <div>
-    <div>
-    <p><button onClick={endEdit}>X</button></p>
-    <div>
-        Name
-        <input value={formState.name} onChange={(e)=>{updateInput(e, "name")}} />
+    <div className="edit-page"> 
+        <center>
+        <div>
+        <p><button onClick={endEdit}>X</button></p>
+        <div>
+            Name  
+            <input value={formState.name} onChange={(e)=>{updateInput(e, "name")}} />
+            </div>
+            <br></br>
+        <div>
+            Level
+            <select type="text" value={formState.level} onChange={(e)=>{updateInput(e,"level")}}>
+            <option value="easy">Easy</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+            </select> 
         </div>
         <br></br>
-    <div>
-        Level
-        <select type="text" value={formState.level} onChange={(e)=>{updateInput(e,"level")}}>
-        <option value="easy">Easy</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="expert">Expert</option>
-        </select> 
-    </div>
-    <br></br>
-    <div>
-        Cuisine
-        <input value={formState.cuisine} onChange={(e)=>{updateInput(e, "ingredients")}}/>
-        </div>
-        <br></br>
-    <div>
-        Ingredients
-        <textarea rows="6" cols="30" type="text" value={formState.ingredients} onChange={(e)=>{updateInput(e,"ingredients")}}>
-         </textarea> 
-        </div>
-        <br></br>
+        <div>
+            Cuisine
+            <input value={formState.cuisine} onChange={(e)=>{updateInput(e, "ingredients")}}/>
+            </div>
+            <br></br>
+        <div>
+            Ingredients
+            <textarea rows="6" cols="30" type="text" value={formState.ingredients} onChange={(e)=>{updateInput(e,"ingredients")}}>
+            </textarea> 
+            </div>
+            <br></br>
 
-     <div>
-        Instructions
-        <textarea rows="6" cols="30" type="text" value={formState.instructions} onChange={(e)=>{updateInput(e,"instructions")}}>
-        </textarea>
-        </div>
-        <br></br>
-    <div>
-        Duration
-        <input value={formState.duration} onChange={(e)=>{updateInput(e, "duration")}} />
-        </div>
-     <div>
-        Pair With
-        <select value={formState.wine} onChange={(e)=>{updateInput(e,"wine")}}>
-         {wineList}
-        </select>
-        </div>
-        <br></br>
+        <div>
+            Instructions
+            <textarea rows="6" cols="30" type="text" value={formState.instructions} onChange={(e)=>{updateInput(e,"instructions")}}>
+            </textarea>
+            </div>
+            <br></br>
+        <div>
+            Duration
+            <input value={formState.duration} onChange={(e)=>{updateInput(e, "duration")}} />
+            </div>
+            <br></br>
+        <div>
+            Pair With
+            <select value={formState.wine} onChange={(e)=>{updateInput(e,"wine")}}>
+            {wineList}
+            </select>
+            </div>
+            <br></br>
 
-        </div>
+            </div>
     <button onClick={submitForm}>Submit</button>
+       </center>
     </div>
     )
 }

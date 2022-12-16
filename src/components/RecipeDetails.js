@@ -42,18 +42,32 @@ export default function RecipeDetails({fetchRecipes,theUser, theWines}){
     }
 
    return(
-        <div className='recipe-details-component'>
+        <div className='details-component'>
            
             {editing && <EditRecipe fetchRecipes={fetchRecipes}stopEditing={setEditing} recipe={theRecipe} theWines={theWines} />}
-            {!editing && <div>
+            <center>
+            {!editing && <div className='details'>
             <p><button onClick={edit}>edit</button></p>
-            <h3>{theRecipe.name}</h3>
-            <p>{theRecipe.level}</p>
-            <p>{theRecipe.ingredients}</p>
+            <h1>{theRecipe.name}</h1>
+
+            <h4>Cuisine:</h4>  
             <p>{theRecipe.cuisine}</p>
+
+            <h4>Level:</h4>
+            <p>{theRecipe.level}</p>
+
+            <h4>Duration:</h4>
             <p>{theRecipe.duration}</p>
+
+            <h4>Ingredients:</h4>
+            <p>{theRecipe.ingredients}</p>
+
+            <h4>Instructions:</h4>
+            <p>{theRecipe.instructions}</p>
+
+        
             </div>}
-            
+            </center>
         </div>
     )
 }

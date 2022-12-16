@@ -40,9 +40,10 @@ export default function CreateWine(fetchWines) {
     }
     
     return (
-     <div>
-     <h1>Add a New Wine!</h1>
-
+     <div className='add-wine-or-recipe'>
+     <div className='add-form'>
+     <center>
+     <h1>Add a New Wine</h1>
             <div>
                 Name
                 <input type="text" value={formState.name} onChange={(e)=>{updateInput(e,"name")}} />
@@ -75,8 +76,14 @@ export default function CreateWine(fetchWines) {
                 <textarea rows="6" cols="30" type="text" value={formState.description} onChange={(e)=>{updateInput(e,"description")}}>
                 </textarea>
             </div>
-           
-            <button onClick={submitForm}>Submit</button>
+           <br></br>
+            <button onClick={submitForm}>Add Wine</button>
+        </center>
+        </div>
+
+         <div className='wine-image'>
+        </div>
+
         </div>
   )
 }

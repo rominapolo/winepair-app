@@ -38,7 +38,8 @@ export default function EditWine(props){
         })
     }
     return(
-        <div> 
+        <div className="edit-page">
+           <center>
            <div>
             <p><button onClick={endEdit}>X</button></p>
             <div>
@@ -69,11 +70,12 @@ export default function EditWine(props){
              <br></br>
            <div>
                 Description
-                <input value={formState.description} onChange={(e)=>{updateInput(e, "description")}} />
+                <textarea rows="6" cols="30" type="text" value={formState.description} onChange={(e)=>{updateInput(e, "description")}} />
             </div>
+            <br></br>
             </div>
-
             <button onClick={submitForm}>Submit</button>
+            </center>
         </div>
     )
 }
